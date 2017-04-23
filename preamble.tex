@@ -1,0 +1,130 @@
+% Norwegian letters
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+% Smaller margins
+\usepackage[cm]{fullpage}
+% Appendix
+\usepackage[titletoc]{appendix}
+\renewcommand\appendixname{}
+% Colours
+\usepackage[usenames,dvipsnames]{xcolor}
+\newcommand{\titlecolor}{MidnightBlue}
+% Paragraphs and lists
+\usepackage{paralist}
+% Compact lists
+\usepackage{enumitem}
+% Figures
+\usepackage{graphicx}
+\renewcommand{\figurename}{Figur}
+% Better interaction of floating figures
+\usepackage{float}
+% Tokolonne-oppsett
+\usepackage{multicol}
+% Index
+\usepackage{makeidx}
+% No hyphenation
+\usepackage[none]{hyphenat}
+% Tabellformatering
+\usepackage{tabularx}
+\setlength{\extrarowheight}{5pt}
+% More signs
+\usepackage{amssymb}
+% More subfigures
+\usepackage{subcaption}
+% Tikz
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows, shapes.arrows, backgrounds}
+% Ceil function
+\usepackage{mathtools}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+% Code listings
+\usepackage{listings}
+\lstset{
+    escapeinside={(*}{*)}
+}
+% Links
+\usepackage{hyperref}
+\usepackage{cleveref}
+
+% Selfdefined title formatting
+\newcommand{\grandtitle}[1]
+{{
+	\color{\titlecolor}
+	\begin{centering}
+	\resizebox{1\hsize}{!}
+	{
+		#1
+	}
+	\bigskip
+	\end{centering}
+}}
+\newcommand{\ctitle}[1]
+{{
+	\color{\titlecolor}
+	\begin{centering}\section{#1}\end{centering}
+	\hrule height 0.5pt \bigskip
+}}
+\newcommand{\cstitle}[1]
+{{
+	\color{\titlecolor}
+	\begin{centering}\subsection*{#1}\end{centering}
+}}
+\newcommand{\atitle}[1]
+{{
+  \color{\titlecolor}
+  \begin{centering}\section*{#1}\end{centering}
+  \hrule height 0.5pt \bigskip
+}}
+% Indexing
+\newcommand{\ix}[1]{\index{#1}#1}
+\newcommand{\idx}[1]{\index{#1}\emph{#1}}
+\makeatletter
+\renewenvironment{theindex}
+  {\if@twocolumn
+      \@restonecolfalse
+   \else
+      \@restonecoltrue
+   \fi
+   \setlength{\columnseprule}{0pt}
+   \setlength{\columnsep}{35pt}
+   \begin{multicols}{3}[\section*{\indexname}]
+   \markboth{\MakeUppercase\indexname}%
+            {\MakeUppercase\indexname}%
+   \thispagestyle{plain}
+   \setlength{\parindent}{0pt}
+   \setlength{\parskip}{0pt plus 0.3pt}
+   \relax
+   \let\item\@idxitem}%
+  {\end{multicols}\if@restonecol\onecolumn\else\clearpage\fi}
+\makeatother
+% Footer
+\renewcommand{\footnoterule}{%
+  \kern -3pt
+  \hrule width \textwidth height 1pt
+  \kern 2pt
+}
+% Table of contents
+\usepackage{setspace}
+\usepackage{tocloft}
+\setcounter{tocdepth}{1}
+\renewcommand{\cftbeforesecskip}{1pt}
+% Horizontal line
+\newlength{\seplinewidth}
+\newlength{\seplinesep}
+\setlength{\seplinewidth}{0.5pt}
+\setlength{\seplinesep}{2mm}
+\colorlet{sepline}{\titlecolor}
+\newcommand*{\sepline}{%
+  \par
+  \vspace{\dimexpr\seplinesep+.5\parskip}%
+  \cleaders\vbox{%
+    \begingroup % because of color
+      \color{sepline}%
+      \hrule width\linewidth height\seplinewidth
+    \endgroup
+  }\vskip\seplinewidth
+  \vspace{\dimexpr\seplinesep-.5\parskip}%
+}
+
+\newlist{todolist}{itemize}{2}
+\setlist[todolist]{label=$\square$}
