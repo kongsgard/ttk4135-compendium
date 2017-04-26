@@ -1,0 +1,25 @@
+\ctitle{Algorithms}
+
+...
+
+\sepline
+
+\paragraph{Simplex}\index{Simplex}
+
+\begin{codebox}
+\Procname{$\proc{One Step of Simplex}()$}
+\li Given $\mathcal{B}, \mathcal{N}, x_B = B^{-1}b \geq, x_N = 0;$
+\li Solve $B^\top \lambda = C_B for \lambda,$
+\li Compute $s_N = c_N - N^\top \lambda;$ (* pricing *)
+\li \If $s_N \geq 0$ \Indentmore
+\li \textbf{stop}; (* optimal point found *) \End
+\li Select $q \in \mathcal{N}$ with $s_q < 0$ as the entering index;
+\li Solve $Bd = A_q$ for d;
+\li \If $d \leq 0$ \Indentmore
+\li \textbf{stop}; (* problem is unbounded *) \End
+\li Calculate $x_q^+ = \text{min}_{i | d_i > 0} (x_B)_i/d_i$, and use $p$ to
+\zi denote the minimizing $i$;
+\li Update $x_B^+ = x_B - dx_q^+, x_N^+ = (0, \dots, 0, x_q^+, 0, \dots, 0)^\top$;
+\li Change $\mathcal{B}$ by adding $q$ and removing the basic
+\zi variable corresponding to column $p$ of $B$
+\end{codebox}
