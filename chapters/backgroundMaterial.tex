@@ -1,0 +1,21 @@
+\ctitle{Backgroud Material}
+
+\index{Matrix factorizations}
+\hskip-0.5cm
+\begin{tabularx}{\linewidth}{X X X X}
+	\multicolumn{4}{c}{\textbf{Matrix factorizations}} \\
+	\textbf{Cholesky} & \textbf{LU} & \textbf{QR} & \textbf{Symmetric indefinite}\\
+	\hline
+	$A = LL^\top$ & $PA = LU$ & $AP = QR$ & $PAP^\top = LBL^\top$\\ %Definitions
+	\hline
+	& $Ax = b$ & &\\
+	& $L\underbrace{(Ux)}_{y} = b$ & &\\
+	& Triangular forward substitution & &\\
+	& $Ly = b$ for y & &\\
+	& Triangular backward substitution & &\\
+	& $Ux = y$ for x & &\\
+	\hline
+	$A \in \mathcal{R}^{nxn}$ & $A \in \mathcal{R}^{nxn}$ & $A \in \mathcal{R}^{mxn}$ & $A=A^T$\\
+	$A=A^T$ (Symmetric) & & (only real A) & A can be indefinite\\
+	$A \succ 0$ & & & \\
+\end{tabularx}
