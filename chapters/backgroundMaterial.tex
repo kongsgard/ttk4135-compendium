@@ -1,4 +1,4 @@
-\ctitle{Backgroud Material}
+\ctitle{Background Material}
 
 \index{Matrix factorizations}
 \hskip-0.5cm
@@ -19,3 +19,57 @@
 	$A=A^T$ (Symmetric) & & (only real A) & A can be indefinite\\
 	$A \succ 0$ & & & \\
 \end{tabularx}
+
+\cstitle{Matrix calculus}
+
+\paragraph{Derivative}
+\begin{equation}
+\begin{split}
+  \nabla(c^\top \mathbf{x}) &= c\\
+  \nabla(\mathbf{x}^\top c) &= c
+\end{split}
+\end{equation}
+%
+\begin{equation}
+  \nabla \left( \frac{1}{2} \mathbf{x}^\top G \mathbf{x} \right) = \frac{1}{2}G \mathbf{x} + \frac{1}{2}G^\top \mathbf{x}
+\end{equation}
+
+\paragraph{Gradient}
+\begin{equation}
+  \nabla f(\mathbf{x}) = \begin{bmatrix} \frac{\partial f}{\partial \mathbf{x}}^\top \end{bmatrix}
+  = \begin{bmatrix}
+  \frac{\partial f}{\partial x_1}\\
+  \vdots\\
+  \frac{\partial f}{\partial x_n}
+  \end{bmatrix}
+\end{equation}
+
+\paragraph{Hessian}
+\begin{equation}
+  \nabla_{xx} f(\mathbf{x}) = \begin{bmatrix}
+    \frac{\partial f}{\partial x_1^2} & \frac{\partial f}{\partial x_1 \partial x_2} & \cdots\\
+    \frac{\partial f}{\partial x_2 \partial x_1} & \frac{\partial f}{\partial x_2^2} &\\
+    \vdots & & \ddots
+  \end{bmatrix}
+\end{equation}
+
+\paragraph{Jacobian}
+\begin{equation}
+  J f(\mathbf{x}) = \begin{bmatrix}
+    \frac{\partial f_1}{\partial x_1} & \frac{\partial f_1}{\partial x_2} & \cdots\\
+    \frac{\partial f_2}{\partial x_1} & \frac{\partial f_2}{\partial x_2} &\\
+    \vdots & & \ddots
+  \end{bmatrix}
+\end{equation}
+
+\cstitle{Elements of Analysis}
+
+\paragraph{Lipschitz continuous}\index{Lipschitz continuous}
+\begin{equation}
+  || f(x_1) - f(x_0) || \leq L || x_1 - x_0 ||, \quad \forall \: x_0, x_1 \in \mathcal{N}
+\end{equation}
+
+\paragraph{Mean value theorem}\index{mean value theorem}
+\begin{equation}
+  f(x+p) = f(x) + \nabla f(x + \alpha p)^\top p
+\end{equation}

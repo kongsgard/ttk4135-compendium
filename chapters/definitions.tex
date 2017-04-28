@@ -1,8 +1,55 @@
 \ctitle{Definitions}
 
-\paragraph{Convexity}\index{convexity} Used to describe a special case of the general constrained optimization problem in which
+\paragraph{Convexity}\index{Convexity} Used to describe a special case of the general constrained optimization problem in which
 \begin{itemize}[nolistsep,noitemsep]
     \item The objective function is convex
     \item The equality constraint functions $c_i(\cdot)$, $i \in \mathcal{E}$ are linear, and
     \item The inequality constraint functions$c_i(\cdot)$, $i \in \mathcal{I}$ are concave
 \end{itemize}
+
+\paragraph{Full-space VS Reduced-space formulation} \index{Full-space formulation} \index{Reduced-space formulation}
+ \begin{itemize}[nolistsep,noitemsep]
+     \item In full-space optimization, we include all inputs and all states in our objective function. The number of optimization variables is $\#\mathrm{steps} \cdot (\#\mathrm{states} + \#\mathrm{inputs})$.
+     \item In reduced-space optimization, we remove the states from the objective function by replacing them using the model ($x_{t+1} = A_t x_t + B_t u_t$). The number of optimization variables is $\#\mathrm{steps} \cdot \#\mathrm{inputs}$.
+ \end{itemize}
+ 
+\hskip-0.5cm
+\begin{tabularx}{\linewidth}{X X X}
+	& \textbf{Pros} & \textbf{Cons}\\
+	\hline
+	\textbf{Full-space} & Often sparsity in matrices & Many variables\\
+	\textbf{Reduced-space} & Less variables & Normally dense matrices
+\end{tabularx}
+
+\paragraph{Model predictive control}\index{model predictive control} (MPC) A form of control in which the current control action is obtained by solving, at each sampling instant, a finite horizon open-loop optimal control problem, using the current state of the plant as the initial state; the optimization yields an optimal control sequence and the first control in this sequence is applied to the plant.
+
+\paragraph{Search directions} \index{Search directions} Several approaches to line search directions can be used:
+
+\hskip-0.5cm
+\begin{tabularx}{\linewidth}{X X}
+	\textbf{Method} & \textbf{Formula}\\
+	\hline
+	Steepest descent & $p_k=-\nabla f_k$\\
+	Newton direction & $p_k^N=-(\nabla^2 f_k)^{-1}\nabla f_k$ \\
+	Quasi-Newton direction & $p_k=-B_k^{-1}\nabla f_k$ \\
+	\quad SR1(Symmetric-rank-one) & For updating $B_k$\\
+	\quad BFGS & \\
+	% Could add Conjugate gradient line
+\end{tabularx}
+
+\paragraph{The Wolfe conditions} \index{The Wolfe conditions}
+Are used in line-search methods to decide if the decrease in the objective function is sufficient.
+\begin{equation}
+    f(x_k+\alpha p_k) <= f(x_k) + c_1 \alpha \nabla f_k^T p_k
+\end{equation}
+
+There is also a second Wolfe condition, but we don't need it if we use backtracking.
+
+\paragraph{Stabilizability} \index{Stabilizability}
+Tells us that we must be able to influence all
+unstable modes. Important for LQGC.
+
+\paragraph{Detectability} \index{Detectability}
+Is a milder form of observability. This implies that an
+observable system always is detectable. The opposite is however not
+necessarily true. Important for LQGC.
