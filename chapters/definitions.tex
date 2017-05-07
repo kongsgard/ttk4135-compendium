@@ -9,7 +9,7 @@
 
 \paragraph{LICQ}\index{LICQ} (Linear Independence Constraint Qualification) Given the point $x$ and the active set $\mathcal{A}(x)$, we say that the LICQ holds if the set of active constraint gradients $\nabla c_i (x), \: i \in \mathcal{A}(x)$ is linearly independent.
 
-\paragraph{Search directions} \index{Search directions} Several approaches to line search directions can be used:
+\paragraph{Search directions}\index{Search directions} Several approaches to line search directions can be used:
 
 \hskip-0.5cm
 \begin{tabularx}{\linewidth}{X X}
@@ -43,7 +43,7 @@ Notation: $[z]^- = \text{max}\{0, -z\}$
 
 The positive scalar $\mu$ is the penalty parameter, which determines the weight that we assigned to constraint satisfaction relative to minimization of the objective.
 
-\textit{Exact merit function:} A merit function $\phi(x; \mu)$ is exact if there is a positive scalar $\mu^*$ such that for any $\mu > \mu^*$, any local solution of the nonlinear programming problem is a local minimizer of $\phi(x; \mu)$. 
+\textit{Exact merit function:} A merit function $\phi(x; \mu)$ is exact if there is a positive scalar $\mu^*$ such that for any $\mu > \mu^*$, any local solution of the nonlinear programming problem is a local minimizer of $\phi(x; \mu)$.
 
 \paragraph{Maratos effect}\index{Maratos effect} The phenomenon where a merit function prevents rapid convergence because steps that make good progress toward a solution are rejected.
 
@@ -62,7 +62,7 @@ The positive scalar $\mu$ is the penalty parameter, which determines the weight 
      \item In full-space optimization, we include all inputs and all states in our objective function. The number of optimization variables is $\#\mathrm{steps} \cdot (\#\mathrm{states} + \#\mathrm{inputs})$.
      \item In reduced-space optimization, we remove the states from the objective function by replacing them using the model ($x_{t+1} = A_t x_t + B_t u_t$). The number of optimization variables is $\#\mathrm{steps} \cdot \#\mathrm{inputs}$.
  \end{itemize}
- 
+
 \hskip-0.5cm
 \begin{tabularx}{\linewidth}{X X X}
 	& \textbf{Pros} & \textbf{Cons}\\
