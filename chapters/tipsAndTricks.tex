@@ -7,3 +7,26 @@ Remember to read the task closely, and see whether it asks for the given resourc
 \begin{equation}
     \text{dominant dynamics} < N < \text{control interval}
 \end{equation}
+
+\paragraph{Slack variables}\index{Slack variables} We normally have tighter bounds on the state variables than reality since some of the constraints are hard and must always be satisfied. Therefore, the state constraints (A.9d) may be violated for all the time. In this case a feasible point may not exist and a control input may not be available.
+
+Fix: (soften the constraints by using slack variables)
+\begin{equation}
+    \min_{z \in \mathbb{R}^n} f(z) = \cdots + p^\top \epsilon + \frac{1}{2} \epsilon ^\top S \epsilon
+\end{equation}
+
+\begin{equation}
+    \begin{split}
+        x^{\text{low}} < \:&x_t < x^{\text{high}}\\
+        &\Downarrow\\
+        x^{\text{low}} - \epsilon_t < \: &x_t < x^{\text{high}} + \epsilon_t
+    \end{split}
+\end{equation}
+
+\paragraph{Linearization of a constraint}
+%
+Use the following formula to linearize a constraint (eg. for use in a QP problem):
+\begin{equation}
+    \nabla c_i(x_i)^\top p + c_1(x_i)
+\end{equation}
+

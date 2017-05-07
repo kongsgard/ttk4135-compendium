@@ -26,3 +26,35 @@ that are updated at each step of the algorithm. Examples: the simplex method and
 \li Change $\mathcal{B}$ by adding $q$ and removing the basic
 \zi variable corresponding to column $p$ of $B$
 \end{codebox}
+%
+\paragraph{MPC-based controllers}\index{MPC} MPC merges feedback control with dynamic optimization.
+
+\begin{tabularx}{\linewidth}{p{1.3cm} X X}
+	\textbf{Name} & \textbf{Optimization problem solved} & \textbf{Note}\\
+	\hline
+	\textbf{MPC} & Non-specified (any) & \\
+	\textbf{Linear MPC} & QP with linear equality constraints and inequalities on $x$, $u$ and $\Delta u$ & \\
+	\textbf{LQ} & Convex QP with only linear equality constraints & \textit{Finite-horizon:} $u_t=K_t x_t$ \textit{Infinite-horizon:} $u_t=K x_t$\\
+	\textbf{LQGC} & Same as LQ & Combined with a Kalman filter\\
+	\textbf{NMPC} & Non-linear optimization problems &\\
+\end{tabularx}
+
+\begin{codebox}
+\Procname{$\proc{State feedback MPC procedure}()$}
+\li \For $T = 0, 1, 2, \dots$ \textbf{do} \Indentmore
+\li Get the current state $x_t$
+\li Solve a dynamic optimization problem on
+\zi the prediction horizon from $t$ to $t+N$
+\zi with $x_t$ as the initial condition
+\li Apply the first control move $u_t$ from
+\zi the solution above \End
+\end{codebox}
+
+\noindent For an output feedback MPC procedure, line 2 in the algorithm above changes to:
+%
+{ \renewcommand\labelenumi{\theenumi}
+\begin{enumerate}[noitemsep,nolistsep]
+    \setcounter{enumi}{1}
+    \item Compute an estimate of the current state $\hat{x}_t$ based on the measured data up until time $t$ 
+\end{enumerate}
+}
