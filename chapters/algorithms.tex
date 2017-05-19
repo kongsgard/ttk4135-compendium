@@ -1,9 +1,5 @@
 \ctitle{Algorithms}
 
-...
-
-\sepline
-
 \paragraph{Active set methods}\index{Active set methods} Maintain estimates of the active and inactive index sets
 that are updated at each step of the algorithm. Examples: the simplex method and active-set method.
 
@@ -26,7 +22,32 @@ that are updated at each step of the algorithm. Examples: the simplex method and
 \li Change $\mathcal{B}$ by adding $q$ and removing the basic
 \zi variable corresponding to column $p$ of $B$
 \end{codebox}
+
+\paragraph{Nelder-Mead method}\index{Nelder-Mead method} A popular derivative-free optimization (DFO) method.
+
+The centroid of the best $n$ points is denoted by
 %
+\begin{equation}
+    \bar{x} = \sum_{i=1}^n x_i
+\end{equation}
+
+The reflection point is given by
+%
+\begin{equation}
+    \bar{x}(t) = \bar{x} + t(x_{n+1} - \bar{x})
+\end{equation}
+
+\begin{codebox}
+\Procname{$\proc{One Step of Neldear-Mead Simplex}()$}
+\li Compute the reflection point $\bar{x}(-1)$
+\zi and evaluate $f_{-1} = f(\bar{x}(-1))$;
+\li \If $f(x_1) < f_{-1} < f(x_n) $ \Indentmore
+\li (* reflected point is neither best
+\zi nor worst in the new simplex *)
+\zi replace $x_{n+1}$ by $\bar{x}(-1)$ and go to next iteration; \End
+\li Ah, see p. 238 - 239 for the rest of the algorithm
+\end{codebox}
+
 \paragraph{MPC-based controllers}\index{MPC} MPC merges feedback control with dynamic optimization.
 
 \begin{tabularx}{\linewidth}{p{1.3cm} X X}
@@ -58,3 +79,14 @@ that are updated at each step of the algorithm. Examples: the simplex method and
     \item Compute an estimate of the current state $\hat{x}_t$ based on the measured data up until time $t$ 
 \end{enumerate}
 }
+
+\paragraph{Methods for optimizing dynamic systems} Two important classes:
+\begin{itemize}[nolistsep,noitemsep]
+    \item \textit{Quasi dynamic optimization}: Optimize a dynamic system by repetitive optimization on a static model.
+    \begin{itemize}[nolistsep,noitemsep]
+        \item Advantages: Smaller problems and less complex formulations.
+        \item Disadvantages: It cannot handle a system with significant dynamics.
+    \end{itemize}
+    \item \textit{Dynamic optimization}: Optimize on a dynamic model. In this case the solution will be a function of time, i.e. all decision variables will be functions of time.
+\end{itemize}
+

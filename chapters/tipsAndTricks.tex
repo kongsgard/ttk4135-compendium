@@ -30,3 +30,21 @@ Use the following formula to linearize a constraint (eg. for use in a QP problem
     \nabla c_i(x_i)^\top p + c_1(x_i)
 \end{equation}
 
+\paragraph{Limit on control input} The constraint $-\Delta u^{\mathrm{high}} \leq \Delta u_t \leq \Delta u^{\mathrm{high}}$ is a limit on change of control input and/or limit wear and tear of control input.
+
+\paragraph{Rosenbrock function}\index{Rosenbrock function} A nonconvex function on the form
+\begin{equation}
+\begin{split}
+    f(x_1, x_2) &= (a - x_1)^2 +b(x_2-x_1^2)^2\\
+    a, b &\geq 0
+\end{split}
+\end{equation}
+
+\paragraph{State feedback infinite LQ control} Let system $(A,B)$ be stabilizable and $(A,D)$ detectable. $D$ is defined by $Q=D^\top D$. Then the closed loop system given by the optimal solution is asymptotically stable.
+
+\paragraph{What to do if the Hessian is positive semi-definite?} (When using the SQP algorithm) The KKT matrix will be singular. Three options to account for this:
+\begin{itemize}[nolistsep,noitemsep]
+    \item Using Quasi-Newton method
+    \item Adding a multiple of the identity matrix
+    \item Modified Cholesky factorization
+\end{itemize}

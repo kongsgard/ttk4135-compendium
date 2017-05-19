@@ -1,0 +1,17 @@
+\ctitle{Theorem}
+
+\paragraph{When $f$ is convex, any local minimizer is a global minimizer of $f$} We are to show that when $f$ is convex, any local minimizer is a global minimizer of $f$. This can be proved by contradiction. Let $x^*$ be a local, but not global, minimizer of $f$. Hence, there is a feasible point $z$ such that $f(z) < f(x^*)$. Consider the line segment
+%
+\begin{equation}
+\label{eq:line_segment}
+    x = \lambda z + (1-\lambda)x^*, \: \lambda \in (0, 1]
+\end{equation}
+%
+that joins $z$ and $x^*$. As $f$ is convex,
+%
+\begin{equation}
+    \label{eq:convex_f}
+    f(x) = f(\lambda z + (1 - \lambda)x^*) \leq \lambda f(z) + (1 - \lambda)f(x^*) < f(x^*)
+\end{equation}
+%
+Since any neighborhood $\mathcal{N}$ of $x^*$ will contain a piece of the line segment \cref{eq:line_segment}, there has to be points $x \in \mathcal{N}$ where \cref{eq:convex_f} is satisfied. This contradicts $x^*$ being a local, but not global, minimizer of $f$. Hence, $x^*$ must be a global minimizer.
